@@ -133,7 +133,7 @@ void MeshCurvature::computeRadialCurvature(Mesh const& m, Eigen::Vector3d const&
         // 重心座標の勾配ベクトルを計算
         // ∇λ(p0) = ( R(pi/2, normalF) * he(0)_vec ) / ( height(j) * |he(0)| )
         for (int j = 0; j < 3; j++) {
-            grad_bc[j] = (Eigen::AngleAxisd(std::numbers::pi, m.normalF[i]) * (m.V[m.F[i]((j+2)%3)] - m.V[m.F[i]((j+1)%3)])) / (2*area);
+            grad_bc[j] = (Eigen::AngleAxisd(std::numbers::pi/2.0, m.normalF[i]) * (m.V[m.F[i]((j+2)%3)] - m.V[m.F[i]((j+1)%3)])) / (2*area);
         }
 
         // ∇f = ∇λ(p0) * f(p0) + ∇λ(p1) * f(p1) + ∇λ(p2) * f(p2)
